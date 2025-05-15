@@ -1,4 +1,4 @@
-import { _PRODUCT_DATABASE } from "../database/Product.DataBase"
+import { _PRODUCT_DATABASE } from "../database/Product.DataBase.js"
 
 export const create = (datas) => {
     _PRODUCT_DATABASE.push(datas);
