@@ -1,0 +1,18 @@
+{
+  "name": "stoq-in-casa",
+  "version": "1.0.0",
+  "description": "Projeto Pessoal para gerenciamento de estoque caseiro",
+  "license": "ISC",
+  "author": "Luis Mario",
+  "type": "module",
+  "main": "App.js",
+  "scripts": {
+    "dev": "nodemon ./src/App.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
