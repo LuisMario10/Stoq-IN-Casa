@@ -11,7 +11,6 @@ export const validateName = (request, response) => {
 
     _PRODUCT_DATABASE.find(e => {
         if(e.nameProduct === request.body.nameProduct) {
-
             response.status(422).json({ 
                 statusCode: 422, 
                 msg: "Produto ja existe na base de dados" 
@@ -27,6 +26,7 @@ export const validateIdentity = (request, response) => {
     if(request.body.id < 0) response.status(422).json({ statusCode: 422, msg: "O 'id' não pode ser negativo" });
         
 }
+
 
 export const validateQuantity = (request, response) => {
 

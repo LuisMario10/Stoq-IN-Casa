@@ -5,23 +5,28 @@ export const create = (datas) => {
 }
 
 export const findAll = () => {
-    return _PRODUCT_DATABASE
+    return _PRODUCT_DATABASE;
 }
 
 export const findById = (id) => {
-    return _PRODUCT_DATABASE[id - 1]
+    return _PRODUCT_DATABASE[id - 1];
 }
 
 export const updateName = (id, data) => {
-    _PRODUCT_DATABASE[id - 1].name = data.name;
+    _PRODUCT_DATABASE[id - 1].nameProduct = data;
 }
 
-export const updateQuantity = (id, data) => {
-    _PRODUCT_DATABASE[id - 1].quantity = data.quantity;
+export const updateQuantityMore = (id, data) => {
+    
+    _PRODUCT_DATABASE[id - 1].quantity = data + _PRODUCT_DATABASE[id - 1].quantity;
+}
+
+export const updateQuantitySub = (id, data) => {
+    _PRODUCT_DATABASE[id - 1].quantity = data.toNumber() - _PRODUCT_DATABASE[id - 1].quantity;
 }
 
 export const updateExpirationDate = (id, datas) => {
-    _PRODUCT_DATABASE[id - 1].expirationDate = datas.expirationDate;
+    _PRODUCT_DATABASE[id - 1].expirationDate = datas;
 }
 
 export const deleteProduct = (id) => {

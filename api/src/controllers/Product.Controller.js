@@ -1,6 +1,7 @@
-import { create, deleteProduct, findAll, findById, updateName, updateQuantity } from "../domain/Product/Product.Repository.js"
+import { create, deleteProduct, findAll, findById, updateName, updateQuantityMore, updateQuantitySub } from "../domain/Product/Product.Repository.js"
 import { validateExpirationDate, validateIdentity, validateName, validateQuantity } from "../shared/validators/Product.Validators.js"
 import productModel from "../domain/Product/Product.Model.js";
+import { _PRODUCT_DATABASE } from "../databases/Product.DataBase.js";
 
 export const post = (request, response) => {
     validateName(request, response);
@@ -24,14 +25,15 @@ export const post = (request, response) => {
 export const getAll = (request, response) => {
 
     try {
-
         response.status(200).json({ statusCode: 200, msg: "Dados de todos os produtos foram coletados com sucesso!!2", result: findAll() });
+
     } catch {
         response.status(500).json({ statusCode: 500, msg: "Server internal error" });
     }
 }
 
 export const getByID = (request, response) => {
+
     validateIdentity(request, response);
 
     try {
@@ -42,15 +44,18 @@ export const getByID = (request, response) => {
 }
 
 export const putName = (request, response) => {
+
     validateIdentity(request, response);
 
     validateName(request, response);
 
     try {
-        updateName(request.body.id, request.body.name);
-        response.status(201).json({ statusCode: 201, msg: "Nome de Produto atualizado com sucesso!!!" });
-    } catch {
-        request.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
+        updateName(request.body.id, request.body.nameProduct);
+        response.status(201).json({ statusCode: 201, msg: "Nome de Produto atualizado com sucesso!!!", product: _PRODUCT_DATABASE[request.body.id - 1] });
+
+    } 
+    catch {
+        response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
     }
 }
 
@@ -60,19 +65,34 @@ export const putQuantity = (request, response) => {
 
     validateQuantity(request, response);
 
-    try {
-        updateQuantity(request.body.id, request.body.quantity);
-        response.status(201).json({ statusCode: 201, msg: "Nome de Produto atualizado com sucesso!!!" });
-    } catch {
-        request.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
+    if(request.body.option === "+") {
+
+        try {
+            updateQuantityMore(request.body.id, request.body.quantity);
+            response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
+        } 
+       catch {
+            response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
+        }
+    } 
+    else if(request.body.option === "-") {
+
+        try {
+            updateQuantitySub(request.body.id, request.body.quantity);
+            response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
+        } 
+        catch {
+            response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
+        }
     }
+
 }
+
 export const putExpirationDate = (request, response) => {
     validateIdentity(request, response);
 
     validateExpirationDate(request, response);
     
-
     try {
         updateExpirationDate(request.body.id, request.body.expirationDate);
         response.status(201).json({ statusCode: 201, msg: "Data de Validade foi alterada com sucesso" });
