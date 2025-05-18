@@ -7,6 +7,6 @@ const _PORT = 2345;
 
 _APP.use(express.json());
 
-_APP.use(__PRODUCT_ROUTER)
+_APP.use(_PRODUCT_ROUTER)
 
-_APP.listen(_PORT, () => `Servidor Rodando em: http://localhost:${_PORT}`);
+_APP.listen(_PORT, () => console.log(`Servidor Rodando em: http://localhost:${_PORT}`));

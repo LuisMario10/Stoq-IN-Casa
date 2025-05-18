@@ -1,12 +1,11 @@
-import { create, deleteProduct, findAll, findById, updateName, updateQuantity } from "../domain/Product.Repository.js"
+import { create, deleteProduct, findAll, findById, updateName, updateQuantity } from "../domain/Product/Product.Repository.js"
 import { validateExpirationDate, validateIdentity, validateName, validateQuantity } from "../shared/validators/Product.Validators.js"
-import productModel from "../domain/Product.Model.js";
+import productModel from "../domain/Product/Product.Model.js";
 
 export const post = (request, response) => {
     validateName(request, response);
 
     const { nameProduct, price, expirationDate } = request.body;
-
 
     try {
 
@@ -14,10 +13,11 @@ export const post = (request, response) => {
 
         create(product);
 
-        response.status(201).json({ msg: "Produto incerido na base de dados com sucesso!!" });
-    } catch {
+        response.status(201).json({ statusCode: 201, msg: "Produto incerido na base de dados com sucesso!!", productDatas: product })
 
         response.status(500).json({ msg: "Server internal error" });
+    } catch {
+        response.status(500).json({ statusCode: 500, msg: "Server Internal Error" })
     }
 }
 

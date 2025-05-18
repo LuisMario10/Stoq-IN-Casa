@@ -1,4 +1,4 @@
-import { _PRODUCT_DATABASE } from "../database/Product.DataBase.js"
+import { _PRODUCT_DATABASE } from "../../databases/Product.DataBase.js"
 
 export const create = (datas) => {
     _PRODUCT_DATABASE.push(datas);
@@ -9,11 +9,7 @@ export const findAll = () => {
 }
 
 export const findById = (id) => {
-    return {
-        nameProduct: _PRODUCT_DATABASE[id - 1].nameProduct,
-        price: _PRODUCT_DATABASE[id - 1].price,
-        createdAt: _PRODUCT_DATABASE[id - 1].createdAt
-    }
+    return _PRODUCT_DATABASE[id - 1]
 }
 
 export const updateName = (id, data) => {
