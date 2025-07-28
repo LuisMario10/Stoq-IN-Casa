@@ -1,60 +1,64 @@
-# Projeto Stoq-IN-Casa
 
-## Objetivo do Projeto
+---
 
-- Projeto para facilitar a lista de compras de sua casa
+# 📦 Projeto **Stoq-IN-Casa**
 
-## Data de Inicio do Desenvolvimento
+## ✅ Objetivo
 
-- 15/05/2025
+O projeto **Stoq-IN-Casa** tem como principal finalidade **simplificar e automatizar a gestão de produtos armazenados em residências**. A proposta é oferecer uma solução prática para controle de estoque doméstico e auxílio em compras inteligentes.
 
-## Entidades do Sistema
+---
 
-### Produto
+## 🗓️ Data de Início
 
-*atributos*
+**15 de maio de 2025**
 
-- Nome do Produto -> Texto
+---
 
-- Preço Estimado -> Float
+## 🧩 Entidades do Sistema
 
-- Quantidade -> Numero Intero
+### 🛒 Produto
 
-- Data de Validade -> Texto
+| Atributo         | Tipo       | Descrição                                       |
+| ---------------- | ---------- | ----------------------------------------------- |
+| Nome do Produto  | Texto      | Nome do item armazenado                         |
+| Preço Estimado   | Float      | Valor aproximado do produto                     |
+| Quantidade       | Inteiro    | Quantidade disponível                           |
+| Data de Validade | Texto/Data | Validade do produto (formato a definir)         |
+| Data de Cadastro | Texto/Data | Data em que o produto foi registrado no sistema |
 
-- Data de Cadastro -> Text
+---
 
-### Usuario
+### 👤 Usuário
 
-*atributos*
+| Atributo                              | Tipo          | Descrição                                              |
+| ------------------------------------- | ------------- | ------------------------------------------------------ |
+| Nome                                  | Texto         | Nome completo do usuário                               |
+| Email                                 | Texto (único) | E-mail usado para login e comunicação                  |
+| Senha                                 | Texto         | Senha criptografada para acesso                        |
+| É Administrador (éADM)                | Booleano      | Define se o usuário possui permissões administrativas  |
+| Produtos do Cotidiano                 | Lista\[Texto] | Produtos que o usuário costuma utilizar com frequência |
+| Data de Registro                      | Texto/Data    | Data de criação do perfil                              |
+| Data da Última Alteração de Registros | Texto/Data    | Última vez que o usuário atualizou seu estoque         |
 
-- Nome -> Texto
+---
 
-- Email -> Texto (unico)
+## 💡 Propostas e Funcionalidades
 
-- Senha -> Text
+* 📋 **Gerenciamento doméstico eficiente**: Organização do estoque pessoal de forma simples e acessível.
+* 🛍️ **Lista de compras inteligente**: Geração automática de listas com base em produtos em falta e sugestão de melhores preços por item.
+* 🔔 **Alertas e notificações**: Avisos sobre produtos próximos do vencimento ou com estoque baixo (proposta futura).
+* 📊 **Relatórios personalizados**: Histórico de consumo e gastos mensais (expansão futura).
 
-- é ADM -> Booleano
+---
 
-- Produtos do Cotidiano -> Lista[Texto]
+## 🧰 Tecnologias Utilizadas
 
-- Data de Registro -> Texto
+| Camada              | Tecnologias                                                   |
+| ------------------- | ------------------------------------------------------------- |
+| Front-End           | HTML, CSS, JavaScript                                         |
+| Back-End            | Node.js com Express                                           |
+| Banco de Dados      | MySQL                                                         |
+| Futuras Integrações | APIs de mercado e preços (ex: Mercado Livre, Google Shopping) |
 
-- Data da Ultima Alteração de Registros -> Texto
-
-## Funcionalidades do Sistema
-
-1. Gerenciar produtos comprado do armario de compras (CRUD)
-
-2. Quando produtos estiverem para terminar o sistema monta uma lista de compras automatica, verificando os melhores preços em sites de mercados e retorna o melhor preço junto do mercado analizado para compor a lista
-
-## Ideia futura 
-
-- Por para o publico com taxa de assinatura
-
-## Tecnologias usadas no sistema
-
-- JavaScript (front e back)
-- HTML + CSS (front)
-- express (back)
-- banco MySQL (adicionar em breve)
+---
