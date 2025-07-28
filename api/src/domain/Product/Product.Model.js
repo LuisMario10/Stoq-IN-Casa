@@ -7,7 +7,7 @@ export default function productModel(nameProduct, quantity, expirationDate) {
         id: _PRODUCT_DATABASE.length + 1,
         nameProduct: nameProduct,
         quantity: quantity,
-        createdAt: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+        createdAt: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
         expirationDate: expirationDate
     };
 }

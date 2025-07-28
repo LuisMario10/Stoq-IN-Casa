@@ -11,10 +11,10 @@ export const validateName = (request, response) => {
 
     _PRODUCT_DATABASE.find(e => {
         if(e.nameProduct === request.body.nameProduct) {
-            response.status(422).json({ 
-                statusCode: 422, 
-                msg: "Produto ja existe na base de dados" 
-            })
+            return response.status(422).json({ 
+                    statusCode: 422, 
+                    msg: "Produto ja existe na base de dados" 
+                })
         }
     });
 }
@@ -36,6 +36,6 @@ export const validateQuantity = (request, response) => {
 }
 
 export const validateExpirationDate = (request, response) => {
-
+    
     if(!request.body.expirationDate) response.status(422).json({ statusCode: 422, msg: "O campo 'Data de Validade' não pode estar" });
 }

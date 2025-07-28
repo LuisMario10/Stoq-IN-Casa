@@ -1,5 +1,5 @@
 {
-  "name": "stoq-in-casa",
+  "name": "Stoq-IN-Casa",
   "version": "1.0.0",
   "description": "Projeto Pessoal para gerenciamento de estoque caseiro",
   "license": "ISC",
@@ -9,10 +9,10 @@
   "scripts": {
     "dev": "node ./src/App.js"
   },
-  "devDepenedencies": {
-    "nodemon": "^3.1.10"
-  },
   "dependencies": {
     "express": "^5.1.0"
+  },
+  "devDepenedencies": {
+    "nodemon": "^3.1.10"
   }
 }

@@ -1,29 +1,29 @@
-import { create, deleteProduct, findAll, findById, updateName, updateQuantityMore, updateExpirationDate, updateQuantitySub } from "../domain/Product/Product.Repository.js"
+import { create, deleteProduct, findAll, findById, updateName, updateQuantity, updateExpirationDate } from "../domain/Product/Product.Repository.js"
 import { validateExpirationDate, validateIdentity, validateName, validateQuantity } from "../shared/validators/Product.Validators.js"
-import productModel from "../domain/Product/Product.Model.js";
 import { _PRODUCT_DATABASE } from "../databases/Product.DataBase.js";
+
+import productModel from "../domain/Product/Product.Model.js";
 
 export const post = (request, response) => {
     validateName(request, response);
 
-    const { nameProduct, price, expirationDate } = request.body;
+    const { nameProduct, quantity, expirationDate } = request.body;
 
     try {
-
-        let product = productModel(nameProduct, price, expirationDate);
+        let product = productModel(nameProduct, quantity, expirationDate);
 
         create(product);
 
         response.status(201).json({ statusCode: 201, msg: "Produto incerido na base de dados com sucesso!!", productDatas: product })
     } catch {
-        response.status(500).json({ statusCode: 500, msg: "Server Internal Error" })
+        response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
     }
 }
 
 export const getAll = (_, response) => {
     try {
         response.status(200).json({ statusCode: 200, msg: "Dados de todos os produtos foram coletados com sucesso!!2", result: findAll() });
-
+        
     } catch {
         response.status(500).json({ statusCode: 500, msg: "Server internal error" });
     }
@@ -60,28 +60,16 @@ export const putQuantity = (request, response) => {
     validateIdentity(request, response);
 
     validateQuantity(request, response);
-
-    if(request.body.option === "+") {
-        try {
-            updateQuantityMore(request.body.id, request.body.quantity);
-            response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
-        } 
-       catch {
-            response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
-        }
-    } 
-    else if(request.body.option === "-") {
-
-        try {
-            updateQuantitySub(request.body.id, request.body.quantity);
-            response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
-        } 
-        catch {
-            response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
-        }
+    
+    try {
+        updateQuantity(request.body.id, request.body.quantity);
+        response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
     }
+    catch {
+        response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
+    }
+} 
 
-}
 
 export const putExpirationDate = (request, response) => {
     validateIdentity(request, response);
@@ -102,7 +90,8 @@ export const deleteProd = (request, response) => {
     try {
         deleteProduct(request.body.id);
         response.status(201).json({ statusCode: 201, msg: "Produto deletado!!!" });
-    } catch {
+    } catch(Error) {
         response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
+        console.log(Error)
     }
 }
