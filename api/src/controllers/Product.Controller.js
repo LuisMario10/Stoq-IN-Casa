@@ -1,4 +1,4 @@
-import { create, deleteProduct, findAll, findById, updateName, updateQuantityMore, updateQuantitySub } from "../domain/Product/Product.Repository.js"
+import { create, deleteProduct, findAll, findById, updateName, updateQuantityMore, updateExpirationDate, updateQuantitySub } from "../domain/Product/Product.Repository.js"
 import { validateExpirationDate, validateIdentity, validateName, validateQuantity } from "../shared/validators/Product.Validators.js"
 import productModel from "../domain/Product/Product.Model.js";
 import { _PRODUCT_DATABASE } from "../databases/Product.DataBase.js";
@@ -15,15 +15,12 @@ export const post = (request, response) => {
         create(product);
 
         response.status(201).json({ statusCode: 201, msg: "Produto incerido na base de dados com sucesso!!", productDatas: product })
-
-        response.status(500).json({ msg: "Server internal error" });
     } catch {
         response.status(500).json({ statusCode: 500, msg: "Server Internal Error" })
     }
 }
 
-export const getAll = (request, response) => {
-
+export const getAll = (_, response) => {
     try {
         response.status(200).json({ statusCode: 200, msg: "Dados de todos os produtos foram coletados com sucesso!!2", result: findAll() });
 
@@ -51,8 +48,7 @@ export const putName = (request, response) => {
 
     try {
         updateName(request.body.id, request.body.nameProduct);
-        response.status(201).json({ statusCode: 201, msg: "Nome de Produto atualizado com sucesso!!!", product: _PRODUCT_DATABASE[request.body.id - 1] });
-
+        response.status(201).json({ statusCode: 201, msg: "Nome de Produto atualizado com sucesso!!!", product: findById(request.body.id) });
     } 
     catch {
         response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
@@ -66,7 +62,6 @@ export const putQuantity = (request, response) => {
     validateQuantity(request, response);
 
     if(request.body.option === "+") {
-
         try {
             updateQuantityMore(request.body.id, request.body.quantity);
             response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
