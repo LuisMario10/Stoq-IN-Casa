@@ -1,5 +1,5 @@
 {
-  "name": "Stoq-IN-Casa",
+  "name": "stoq-in-casa",
   "version": "1.0.0",
   "description": "Projeto Pessoal para gerenciamento de estoque caseiro",
   "license": "ISC",
@@ -10,9 +10,12 @@
     "dev": "node ./src/App.js"
   },
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.2.0",
     "express": "^5.1.0"
   },
   "devDepenedencies": {
     "nodemon": "^3.1.10"
-  }
+  },
+  "keywords": []
 }
