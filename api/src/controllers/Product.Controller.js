@@ -5,6 +5,7 @@ import { _PRODUCT_DATABASE } from "../databases/Product.DataBase.js";
 import productModel from "../domain/Product/Product.Model.js";
 
 export const post = (request, response) => {
+
     validateName(request, response);
 
     const { nameProduct, quantity, expirationDate } = request.body;
@@ -34,7 +35,7 @@ export const getByID = (request, response) => {
     validateIdentity(request, response);
 
     try {
-        response.status(200).json({ msg: `Produto de id: ${request.body.id} foi resgatado com sucesso!!!`, result: findById(request.body.id) });
+        response.status(200).json({ msg: `Produto de id: ${request.params.id} foi resgatado com sucesso!!!`, result: findById(request.body.id) });
     } catch {
         response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
     }
@@ -47,7 +48,7 @@ export const putName = (request, response) => {
     validateName(request, response);
 
     try {
-        updateName(request.body.id, request.body.nameProduct);
+        updateName(request.params.id, request.body.nameProduct);
         response.status(201).json({ statusCode: 201, msg: "Nome de Produto atualizado com sucesso!!!", product: findById(request.body.id) });
     } 
     catch {
@@ -62,7 +63,7 @@ export const putQuantity = (request, response) => {
     validateQuantity(request, response);
     
     try {
-        updateQuantity(request.body.id, request.body.quantity);
+        updateQuantity(request.params.id, request.body.quantity);
         response.status(201).json({ statusCode: 201, msg: "Quantidade do Produto atualizada com sucesso!!!" });
     }
     catch {
@@ -77,7 +78,7 @@ export const putExpirationDate = (request, response) => {
     validateExpirationDate(request, response);
     
     try {
-        updateExpirationDate(request.body.id, request.body.expirationDate);
+        updateExpirationDate(request.params.id, request.body.expirationDate);
         response.status(201).json({ statusCode: 201, msg: "Data de Validade foi alterada com sucesso" });
     } catch {
         response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
@@ -88,10 +89,9 @@ export const deleteProd = (request, response) => {
     validateIdentity(request, response);
 
     try {
-        deleteProduct(request.body.id);
+        deleteProduct(request.params.id);
         response.status(201).json({ statusCode: 201, msg: "Produto deletado!!!" });
-    } catch(Error) {
+    } catch {
         response.status(500).json({ statusCode: 500, msg: "Server Internal Error" });
-        console.log(Error)
     }
 }
