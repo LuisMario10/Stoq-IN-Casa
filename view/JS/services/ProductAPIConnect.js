@@ -2,8 +2,7 @@ import axios from 'axios'
 
 const _ROUTE = `http://localhost:2345/stoq/prod/`
 
-
-const createProduct = async (nameProduct, quantity, expirationDate) => {
+export const createProduct = async (nameProduct, quantity, expirationDate) => {
 
     const _URL = _ROUTE + "p/";
 
@@ -21,21 +20,20 @@ const createProduct = async (nameProduct, quantity, expirationDate) => {
     }
 }
 
-const getAllProducts = async () => {
+export const getAllProducts = async () => {
 
     const _URL = _ROUTE + "g/all";
 
-    console.log(_URL)
-
     try {
-        return await axios.get(_URL)
-    } catch(error) {
+        return (await axios.get(_URL)).data
+    } 
+    catch(error) {
         return error
     }
 }
 
 
-const getProductByID = async id => {
+export const getProductByID = async id => {
 
     const _URL = _ROUTE + `g/bid/${id}`
 
@@ -43,13 +41,14 @@ const getProductByID = async id => {
 
     try {
         return await axios.get(_URL);
-    } catch(error) {
+    } 
+    catch(error) {
         return error;
     }
 }
 
 
-const updateNameProduct = async (id, newnNameProduct) => {
+export const updateNameProduct = async (id, newnNameProduct) => {
 
     const _URL = _ROUTE + `u/name/${id}`;
 
@@ -64,26 +63,23 @@ const updateNameProduct = async (id, newnNameProduct) => {
     }
 }
 
-const updateProductQuantity = async (id, newQuantity) => {
+export const updateProductQuantity = async (id, newQuantity) => {
 
     const _URL = _ROUTE + `u/quant/${id}`;
-
-    console.log(_URL)
 
     try {
         return await axios.put(_URL, {
             quantity: newQuantity
         });
-    } catch(error) {
+    } 
+    catch(error) {
         return error;
     }
 }
 
-const updateProductExpirationDate = async (id, newExpirationDate) => {
+export const updateProductExpirationDate = async (id, newExpirationDate) => {
 
     const _URL = _ROUTE + `u/expdate/${id}`;
-
-    console.log(_URL);
 
     try {
         return await axios.put(_URL, {
@@ -95,3 +91,15 @@ const updateProductExpirationDate = async (id, newExpirationDate) => {
 }
 
 
+export const deleteProduct = async (id) => {
+
+    const _URL = _ROUTE + `d/${id}`;
+
+    try {
+        return await axios.delete(_URL, {
+            expirationDate: newExpirationDate
+        });
+    } catch(error) {
+        return error;
+    }
+}

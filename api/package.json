@@ -17,5 +17,6 @@
   "devDepenedencies": {
     "nodemon": "^3.1.10"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {}
 }

@@ -24,8 +24,3 @@ export const query = (query, values = "", mensage, options) => {
     }
 }
 
-_DATABASE.prepare('CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, averangePrice FLOAT, expirationDate TEXT, createdAt TEXT, updatedAt TEXT);').run();
-
-const q = query("SELECT * FROM products", "", "Erro ao tentar visualizar todos os registros de produto", "get_all");
-
-console.log(q);
