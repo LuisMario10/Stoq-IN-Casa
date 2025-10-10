@@ -1,17 +1,15 @@
-
 ---
-
-# 📦 Projeto **Stoq-IN-Casa**
+# 📦 Projeto **Stoq**
 
 ## ✅ Objetivo
 
-O projeto **Stoq-IN-Casa** tem como principal finalidade **simplificar e automatizar a gestão de produtos armazenados em residências**. A proposta é oferecer uma solução prática para controle de estoque doméstico e auxílio em compras inteligentes.
+O projeto **Stoq** tem como principal finalidade **simplificar e automatizar a gestão de produtos armazenados em residências**. A proposta é oferecer uma solução prática para controle de estoque doméstico e auxílio em compras inteligentes.
 
 ---
 
 ## 🗓️ Data de Início
 
-**15 de maio de 2025**
+**10 de outubro de 2025**
 
 ---
 
@@ -29,20 +27,6 @@ O projeto **Stoq-IN-Casa** tem como principal finalidade **simplificar e automat
 
 ---
 
-### 👤 Usuário
-
-| Atributo                              | Tipo          | Descrição                                              |
-| ------------------------------------- | ------------- | ------------------------------------------------------ |
-| Nome                                  | Texto         | Nome completo do usuário                               |
-| Email                                 | Texto (único) | E-mail usado para login e comunicação                  |
-| Senha                                 | Texto         | Senha criptografada para acesso                        |
-| É Administrador (éADM)                | Booleano      | Define se o usuário possui permissões administrativas  |
-| Produtos do Cotidiano                 | Lista\[Texto] | Produtos que o usuário costuma utilizar com frequência |
-| Data de Registro                      | Texto/Data    | Data de criação do perfil                              |
-| Data da Última Alteração de Registros | Texto/Data    | Última vez que o usuário atualizou seu estoque         |
-
----
-
 ## 💡 Propostas e Funcionalidades
 
 * 📋 **Gerenciamento doméstico eficiente**: Organização do estoque pessoal de forma simples e acessível.
@@ -56,8 +40,8 @@ O projeto **Stoq-IN-Casa** tem como principal finalidade **simplificar e automat
 
 | Camada              | Tecnologias                                                   |
 | ------------------- | ------------------------------------------------------------- |
-| Front-End           | HTML, CSS, JavaScript                                         |
-| Back-End            | Node.js com Express                                           |
+| Front-End           | ReactJS, Tailwind, ZOD                                        |
+| Back-End            | Node.js com Express, Prisma                                  |
 | Banco de Dados      | MySQL                                                         |
 | Futuras Integrações | APIs de mercado e preços (ex: Mercado Livre, Google Shopping) |
 
