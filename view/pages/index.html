@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stoq-IN-Casa</title>
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
     <main>
         <header>
-            <div>
+            <div class="logo">
                 StIC
             </div>
-            <nav>
+            <nav class="menu">
                 <a href="#">home</a>
-                <a href="#2">list manager</a>
+                <a href="../pages/list-manager.html">list manager</a>
                 <a href="#3">perfil</a>
             </nav>
         </header>
         <div class="form-container">
             <div class="input-container">
-                <input type="text" placeholder="Nome do Produto">
-                <input type="text" placeholder="Quantidade">
-                <input type="text" placeholder="Data de Validade">
+                <input type="text" placeholder="Nome do Produto" class="input" required/>
+                <input type="number" placeholder="Quantidade" class="input" required/>
+                <input type="date" placeholder="Data de Validade" class="input" required/>
             </div>
             <div class="button-container">
                 <button class="button" id="button-confirm">
@@ -34,7 +35,7 @@
         </div>
         <div class="actual-list-container">
             <div class="products"></div>
-            <div class="buttons">
+            <div class="hide">
                 <button class="button-create-list">
                     Criar lista
                 </button>
@@ -45,4 +46,5 @@
         </div>
     </main>
 </body>
+<script src="../scripts/main.js"></script>
 </html>
