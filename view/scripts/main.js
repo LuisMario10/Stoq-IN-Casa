@@ -1,57 +1,114 @@
-const listContainer = document.querySelector(".list-container");
+// Usar preco em centavos depois *
+
+const LISTS = []
+
+const listContainer = document.querySelector(".lists");
+
+const nameProductInput = document.querySelector("#name-input");
+const quantityInput = document.querySelector("#quantity-input");
+const expirationDateInput = document.querySelector("#expiration-date-input")
+
+const buttonConfirm = document.querySelector("#button-confirm")
+const buttonClear = document.querySelector("#button-clear")
+
+const listButtons = document.querySelector("#list-buttons")
+
+if(!LISTS) listContainer.innerHTML = "<h3>Nenhum Produto na lista</h3>"
 
 
-const DATABASE = [
-    {
-        id: 1,
-        listName: "Lista 1",
-        itens: [
-            { id: 1, productName: "Arroz", quantity: 12, priceInCents: 1500, expirationDate: "22/12/2025" },
-            { id: 2, productName: "Feijão", quantity: 5, priceInCents: 1000, expirationDate: "04/04/2026" },
-            { id: 3, productName: "Frango", quantity: 9, priceInCents: 1210, expirationDate: "02/01/2026" }
-        ]
-    },
-    {
-        id: 2,
-        listName: "Lista 2",
-        itens: [
-            { id: 1, productName: "Uva", quantity: 7, priceInCents: 1200, expirationDate: "07/02/2026" },
-            { id: 2, productName: "Maçã", quantity: 20, priceInCents: 1450, expirationDate: "09/02/2026" },
-            { id: 3, productName: "Laranja", quantity: 14, priceInCents: 120, expirationDate: "22/09/2026" }
-        ]
-    }
+// Implementar quando houver uma conexão com a API4
+const getPrice = () => "R$ 10,00"
+
+
+const ProductComponent = (props) => {
+    const productComponent = document.createElement("div");
+
+    const datasContainerComponent = document.createElement("div");
+
+    const buttonsContainerComponent = document.createElement("div");
     
-];
+    const nameProductComponent = document.createElement("h2");
+    
+    const quantityComponent = document.createElement("span");
+    
+    const priceComponent = document.createElement("p")
+    
+    const expirationDateComponent = document.createElement("p")
+
+    const buttonRemoveProduct = document.createElement("button")
+
+    const buttonEditProduct = document.createElement("button")
 
 
-// Implementação provisoria
-const priceConverter = (priceInCents) => priceInCents / 100;
+    productComponent.classList.add("product-component")
 
-const createItemListComponent = (props) => {
+    datasContainerComponent.classList.add("datas-container")
 
-    const listComponent = document.createElement('div');
+    buttonsContainerComponent.classList.add("buttons-act-container")
 
-    const nameElement = document.createElement('h2');
+    buttonRemoveProduct.classList.add("buttons-act")
 
-    const quantityElement = document.createElement('span');
+    buttonRemoveProduct.classList.add("button-act-remove")
 
-    const priceElement = document.createElement('span');
+    buttonEditProduct.classList.add("buttons-act")
 
-    const expirationDateElement = document.createElement('p');
+    buttonEditProduct.classList.add("button-act-edit")
 
+    
+    nameProductComponent.textContent = props.nameProduct
+    
+    quantityComponent.textContent = props.quantity + " Unidades";
+    
+    priceComponent.textContent = props.price
+    
+    expirationDateComponent.textContent = props.expirationDate
 
-    nameElement.textContent = props.productName;
+    buttonEditProduct.textContent = "Editar"
+    
+    buttonRemoveProduct.textContent = "Remover"
 
-    quantityElement.textContent = props.quantity;
+    datasContainerComponent.appendChild(nameProductComponent)
+    datasContainerComponent.appendChild(quantityComponent)
+    datasContainerComponent.appendChild(priceComponent)
+    datasContainerComponent.appendChild(expirationDateComponent)
 
-    priceElement.textContent = priceConverter(props.priceInCents);
+    buttonsContainerComponent.appendChild(buttonEditProduct)
+    buttonsContainerComponent.appendChild(buttonRemoveProduct)
 
-    expirationDateElement.textContent = props.expirationDate;
-
-    listComponent.appendChild(nameElement);
-    listComponent.appendChild(quantityElement);
-    listComponent.appendChild(priceElement);
-    listComponent.appendChild(expirationDateElement);
-
-    listContainer.appendChild(listComponent);
+    productComponent.appendChild(datasContainerComponent)
+    productComponent.appendChild(buttonsContainerComponent)
+    
+    listContainer.appendChild(productComponent)
 }
+
+
+
+buttonConfirm.addEventListener("click", () => {
+    if(!nameProductInput.value) return window.alert("Campo de Nome do Produto não pode estar vazio!!!");
+
+    if(nameProductInput.value.length < 2) return window.alert("Campo de Nome do Produto deve ter mais de 1 charactere!!!");
+
+    if(!quantityInput.value) return window.alert("Campo de Nome do Produto não pode estar vazio!!!");    
+
+    if(!expirationDateInput.value) return window.alert("Campo de Data de Validade não pode esta vazio")
+
+    listButtons.classList.remove("hide");
+
+    const product = {
+        nameProduct: nameProductInput.value,
+        quantity: quantityInput.value,
+        price: getPrice(),
+        expirationDate: expirationDateInput.value 
+    }
+
+    LISTS.push(product)
+
+    ProductComponent(product)
+})
+
+
+buttonClear.addEventListener("click", () => {
+    nameProductInput.value = "";
+    quantityInput.value = "";
+    expirationDateInput.value = "";
+})

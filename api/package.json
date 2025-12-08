@@ -11,14 +11,15 @@
   "author": "Luis Mario",
   "license": "ISC",
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "better-sqlite3": "^12.5.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "http-status-codes": "^2.3.0"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
+    "@types/express": "^5.0.6",
     "@types/http-status-codes": "^1.2.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.7.2",
@@ -26,8 +27,9 @@
     "dotenv": "^17.2.3",
     "eslint": "^9.37.0",
     "globals": "^16.4.0",
+    "http-status-codes": "^2.3.0",
     "jest": "^30.2.0",
-    "jiti": "^2.6.1", 
+    "jiti": "^2.6.1",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.5",
     "typescript": "^5.9.3",

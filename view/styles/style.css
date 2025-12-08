@@ -8,7 +8,7 @@
     display: none;
 }
 
-body {
+html, body {
     width: 100vw;
     height: 100vh;
 }
@@ -31,6 +31,7 @@ header {
     background: linear-gradient(to left, yellow, rgb(255, 133, 2));
     border-bottom: 1px solid black;
     border-radius: 0px 0px 8px 8px;
+    position: fixed;
 }
 
 
@@ -71,8 +72,9 @@ header {
 }
 
 .form-container {
+    margin-top: 136px;
     width: 60%;
-    height: 60%;
+    height: 48vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -121,25 +123,87 @@ header {
     transition: .5s;
 }
 
-#button-confirm {
-    background: green;
-    color: white;
-}
-
-#button-clear {
-    background: white;
-}
 
 #button-confirm:hover {
     background: rgb(2, 207, 2);
+    color: white;
 }
 
 #button-clear:hover {
-    background: rgb(230, 227, 227);
+    background: rgb(255, 0, 0);
+    color: white;
 }
 
 .actual-list-container {
-    width: 80%;   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    width: 80%; 
+    height: 30%;
+    overflow-y: auto;
     border: 1px solid black;
+    border-radius: 24px;
 }
 
+.product-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 24px;
+    background: linear-gradient(to left, yellow, rgb(255, 133, 2));
+    text-align: center;
+    width: 306px;
+    height: 216px;
+    margin-bottom: 24px;
+}
+
+
+.datas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    width: 80%;
+    height: 70%;
+    border: 1px solid black;
+    border-radius: 24px;
+    background: linear-gradient(to left, rgb(208, 208, 2), rgb(225, 118, 3));    
+}
+
+.datas-container h2 {
+    background: black;
+    color: white;
+    border-radius: 24px 24px 0px 0px;
+    overflow: hidden;
+}
+
+.buttons-act-container {
+    display: flex;
+    gap: 12px;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 20%;
+}
+
+.buttons-act {
+    border: none;
+    padding: 10px;
+    border-radius: 24px;
+}
+
+.button-act-edit:hover  {
+    transition: .75s;
+    color: white;
+    background-color: green;
+}
+
+.button-act-remove:hover {
+    transition: .75s;
+    color: white;
+    background-color: red;
+}
