@@ -1,10 +1,10 @@
 import { create } from "./Create"
+import { deleteByID } from "./DeleteByID"
 import { findAll } from "./FindAll"
 import { findByID } from "./FindByID"
-import { updateByID } from "./UpdateById"
-import { deleteByID } from "./DeleteByID"
+import { updateByID } from "./UpdateByID"
 
-export const ProductRepository = {
+export const UserRepository = {
     create,
     findAll,
     findByID,

@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { ProductRepository } from "../../domain/repositories";
 import { StatusCodes } from "http-status-codes";
-import { ProductControllerValidator } from "../../shared";
+import { ProductControllerValidator } from "../Validators";
 import { IProduct } from "../../domain/models/Product";
 
 // Função provisoria antes de implementar a real função get price
 const getPrice = () => 12000
 
 export const post = (request: Request, response: Response) => {
-    const { name, quantity, expirationDate } = ProductControllerValidator.bodyProductValidator.parse(request.body);
+    const { name, quantity, expirationDate } = ProductControllerValidator.body.parse(request.body);
 
     const product: Partial<IProduct> = {
         name: name,
