@@ -1,5 +1,5 @@
 ---
-# 📦 Projeto **Stoq**
+# 📦 Projeto **Stoq-IN-Casa**
 
 ## ✅ Objetivo
 
