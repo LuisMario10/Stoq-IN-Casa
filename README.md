@@ -40,9 +40,9 @@ O projeto **Stoq** tem como principal finalidade **simplificar e automatizar a g
 
 | Camada              | Tecnologias                                                   |
 | ------------------- | ------------------------------------------------------------- |
-| Front-End           | ReactJS, Tailwind, ZOD                                        |
-| Back-End            | Node.js com Express, Prisma                                   |
-| Banco de Dados      | MySQL                                                         |
-| Futuras Integrações | APIs de mercado e preços (ex: Merdepay idadecado Livre, Google Shopping) |
+| Front-End           | HTML5, CSS3, JavaScript, Axios                                |
+| Back-End            | Node.js com Express                                           |
+| Banco de Dados      | SQL                                                           |
+| Futuras Integrações | APIs de mercado e preços (ex: Google Shopping), React         |
 
 ---
